@@ -1,27 +1,25 @@
 package com.andrewafony.triada
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.*
 
 class MainViewModel: ViewModel() {
+
+    private val timer = Timer.Base()
 
     private val _time = MutableStateFlow(60)
     val time: StateFlow<Int> = _time
 
-    suspend fun handleTime() = flow {
-        val startingTime = 60
-        var currentValue = startingTime
-        emit(startingTime)
-        while (currentValue >= 0) {
-            delay(1000L)
-            currentValue--
-            emit(currentValue)
-        }
-    }.collectLatest {
-        _time.value = it
+    fun startTimer() {
+        timer.start()
+            .onEach {
+                _time.value = it
+            }.launchIn(viewModelScope)
+    }
+
+    fun pauseTimer() {
+        timer.pause()
     }
 }

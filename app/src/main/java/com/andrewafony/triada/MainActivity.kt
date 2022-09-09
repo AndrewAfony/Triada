@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var words = 0
+
         lifecycleScope.launchWhenCreated {
             repeatOnLifecycle(Lifecycle.State.STARTED){
                 viewModel.time.collect { time ->
@@ -29,9 +31,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.root.setOnClickListener {
-            lifecycleScope.launchWhenCreated {
-                viewModel.handleTime()
-            }
+            words++
+            binding.wordsCount.text = words.toString()
+        }
+
+        binding.buttonStart.setOnClickListener {
+            viewModel.startTimer()
+        }
+
+        binding.buttonPause.setOnClickListener {
+            viewModel.pauseTimer()
         }
 
 

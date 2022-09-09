@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidStudioProjects/Triada/app/src/main/res/layout/activity_main.xml" value="0.28958333333333336" />
+        <entry key="..\:/AndroidStudioProjects/Triada/app/src/main/res/drawable/circular_progress_bar.xml" value="0.1855" />
+        <entry key="..\:/AndroidStudioProjects/Triada/app/src/main/res/drawable/circular_shape.xml" value="0.1855" />
+        <entry key="..\:/AndroidStudioProjects/Triada/app/src/main/res/layout/activity_main.xml" value="0.22" />
       </map>
     </option>
   </component>
