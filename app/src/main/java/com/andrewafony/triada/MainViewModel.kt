@@ -2,7 +2,7 @@ package com.andrewafony.triada
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.delay
+import com.andrewafony.triada.domain.Timer
 import kotlinx.coroutines.flow.*
 
 class MainViewModel: ViewModel() {

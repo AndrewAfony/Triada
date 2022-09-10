@@ -1,4 +1,4 @@
-package com.andrewafony.triada
+package com.andrewafony.triada.domain
 
 import android.os.CountDownTimer
 import kotlinx.coroutines.channels.awaitClose
@@ -13,7 +13,7 @@ interface Timer {
 
     fun reset()
 
-    class Base(): Timer {
+    class Base: Timer {
 
         private lateinit var timer: CountDownTimer
 
@@ -32,7 +32,7 @@ interface Timer {
         }
 
         override fun pause() {
-            timer.cancel()
+            if (this::timer.isInitialized) timer.cancel()
         }
 
         override fun reset() {
